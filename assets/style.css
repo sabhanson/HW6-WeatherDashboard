@@ -12,3 +12,73 @@
     color: white;
     background-image: linear-gradient(to right, lightskyblue, darkblue);
 }
+
+main {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+h3{
+    font-size: 20px;
+}
+
+.left-container {
+    width: 20%;
+    display: flex;
+    padding: 5px;
+    border: 2px solid black;
+}
+
+.right-container {
+    width: 80%;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.today-container {
+    width: 100%;
+    border: 2px solid black;
+}
+
+.forecast-container {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    border: 2px solid black;
+}
+
+.forecastTitle {
+    width: 100%;
+}
+
+.today {
+    border: 1px solid black;
+    width: 98%;
+    margin: 1%;
+}
+
+.dayCard {
+    border: 1px solid black;
+    width: 18%;
+    background-color: darkslateblue;
+    color: white;
+    margin: 1%;
+}
+
+.searchH1 {
+    font-size: 30px;
+}
+
+.searchBar {
+    width: 100%;
+}
+
+.submitBtn {
+    border-radius: 10px;
+    background-color: lightskyblue;
+    width: 100%;
+    color: white;
+    border-bottom: 3px solid black;
+    
+    }

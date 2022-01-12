@@ -34,7 +34,7 @@ function test() {
         //city name
         console.log(data.name);
         //weather forecast emoji
-        console.log(data.weather[0].icon + '@.png')
+        console.log(data.weather[0].icon + '.png')
         //temperature
         console.log(data.main.temp + ' deg farenheit')
         //wind
