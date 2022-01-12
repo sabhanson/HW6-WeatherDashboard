@@ -19,6 +19,7 @@
 
 //what is typed in the searchbar
 var searchInput = document.querySelector('.searchBar');
+var searchInputValue = searchInput.value;
 //literally the submit button itself
 var submitBtn = document.querySelector('.submitBtn');
 //name of city displayed in the large box
@@ -30,28 +31,29 @@ const searchBox = document.querySelector('.search-container');
 var placeholdBtn = document.querySelector('.placeholderBtn');
 //create a button element for previously searched city
 var prevSearchBtn = document.createElement("button");
+var buttonContainer = document.querySelector(".buttons");
 //first half of the API URL that will search a specific city
 const APIweather = 'https://api.openweathermap.org/data/2.5/weather?q=';
 //each of the five day forecast cards
 var cards = document.querySelector('.dayCard');
-//adding moment to each card
+//adding moment (what day is it???) to each card
 var today = document.querySelector('#today');
 today.textContent = moment().format('l');
-var card1 = document.querySelector('.one')
-card1.textContent = moment().add(1, 'day').format('l')
-var card2 = document.querySelector('.two')
-card2.textContent = moment().add(2, 'day').format('l')
-var card3 = document.querySelector('.three')
-card3.textContent = moment().add(3, 'day').format('l')
-var card4 = document.querySelector('.four')
-card4.textContent = moment().add(4, 'day').format('l')
-var card5 = document.querySelector('.five')
-card5.textContent = moment().add(5, 'day').format('l')
+var card1 = document.querySelector('.one');
+card1.textContent = moment().add(1, 'day').format('l');
+var card2 = document.querySelector('.two');
+card2.textContent = moment().add(2, 'day').format('l');
+var card3 = document.querySelector('.three');
+card3.textContent = moment().add(3, 'day').format('l');
+var card4 = document.querySelector('.four');
+card4.textContent = moment().add(4, 'day').format('l');
+var card5 = document.querySelector('.five');
+card5.textContent = moment().add(5, 'day').format('l');
 
 function test() {
-
-
-    var cityQuery = APIweather + cityName + '&units=imperial&appid=d22455c31574a84b22d1c94f4c33f19c';
+    var searchInput = document.querySelector('.searchBar');
+    var searchInputValue = searchInput.value;
+    var cityQuery = APIweather + searchInputValue + '&units=imperial&appid=d22455c31574a84b22d1c94f4c33f19c';
     fetch(cityQuery)
     .then(function (response) {
         return response.json();
@@ -73,7 +75,6 @@ function test() {
 
     };
 
-test();
 
 submitBtn.addEventListener('click', function() {
     var city = searchInput.value;
@@ -82,6 +83,7 @@ submitBtn.addEventListener('click', function() {
     localStorage.setItem("prevSearch",JSON.stringify(city))
     var yeah = localStorage.getItem("prevSearch")
     placeholdBtn.innerHTML = JSON.parse(yeah)
+    test();
 })
 
 //submit button takes the value (city) that was entered into the search bar. needs to populate that info into the container
