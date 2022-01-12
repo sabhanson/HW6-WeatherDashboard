@@ -24,7 +24,6 @@ h3{
 
 .left-container {
     width: 20%;
-    display: flex;
     padding: 5px;
     border: 2px solid black;
 }
@@ -38,6 +37,10 @@ h3{
 .today-container {
     width: 100%;
     border: 2px solid black;
+}
+
+hr {
+    color: black;
 }
 
 .forecast-container {
@@ -80,5 +83,12 @@ h3{
     width: 100%;
     color: white;
     border-bottom: 3px solid black;
-    
     }
+
+.historyCity {
+        border-radius: 10px;
+        background-color: grey;
+        width: 100%;
+        color: white;
+        border-bottom: 3px solid black;
+        }

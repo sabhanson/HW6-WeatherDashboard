@@ -16,9 +16,13 @@
 //MY API KEY : d22455c31574a84b22d1c94f4c33f19c
 //API CALL : api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 
-
+var searchInput = document.querySelector('.searchBar');
+var submitBtn = document.querySelector('.submitBtn')
 var emoji = document.querySelector('.testing');
+var todayName = document.querySelector('.cityName')
 var cityName = "vancouver"
+const searchBox = document.querySelector('.search-container');
+var placeholdBtn = document.querySelector('.historyCity');
 const APIweather = 'https://api.openweathermap.org/data/2.5/weather?q=';
 
 
@@ -47,4 +51,16 @@ function test() {
     };
 
 test();
+
+submitBtn.addEventListener('click', function() {
+    var city = searchInput.value;
+    console.log(city);
+    todayName.textContent = city;
+    localStorage.setItem("prevSearch",JSON.stringify(city))
+    var yeah = localStorage.getItem("prevSearch")
+    placeholdBtn.innerHTML = JSON.parse(yeah)
+})
+
+//submit button takes the value (city) that was entered into the search bar. needs to populate that info into the container
+//then run api function to pull data into container
 
