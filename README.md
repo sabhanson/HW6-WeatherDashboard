@@ -12,4 +12,9 @@ I found the HTML and CSS process to be fairly easy, although I did not have enou
 
 The user will visit the site. Navigate to the search bar on the left side and enter their specified city. Once they click 'submit', weather information for that city will populate on the page. To search another city, the user just needs to type a different city name in the search bar and press 'submit' again. As the user makes new searches, previous searches will become buttons underneath the searchbar, for them to easily access later. The user can have as many cities saved in the local storage as they would like.
 
-![photo of deployed website]()
+![photo of deployed website](https://github.com/sabhanson/HW6-WeatherDashboard/blob/main/assets/Screen%20Shot%202022-01-11%20at%207.34.48%20PM.png)
+
+
+## Badges
+
+![GitHub followers](https://img.shields.io/github/followers/sabhanson?style=social)
