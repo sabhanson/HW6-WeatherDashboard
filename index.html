@@ -14,12 +14,6 @@
         <p>Weather Dashboard</p>
     </header>
 
-    <!-- need a container for the left side (input search area) -->
-    <!-- need a container for the right side (container today) and (container 5 days) -->
-
-    <!-- need containers for each side of the page... flexboxes
-    hidden cards dont show until submit is pressed
-    placeholder text for all info, will be DOM manipulated, so give each item a class/id -->
     <main>        
         <section class="left-container">
             <div class="search-container">
@@ -27,13 +21,16 @@
                 <input class="searchBar" type="search" value="" placeholder="enter city:"><br>
                 <input class="submitBtn" type="submit" value="submit">
                 <hr style="height:3px">
-                <button class="historyCity">placeholder</button>
+                <div class="buttons">
+                    <button class="placeholderBtn">placeholder</button>
+                </div>
             </div>
         </section>
         <div class="right-container">
             <section class="today-container">
                 <div class="today">
                     <h3 class="cityName">CityName</h3>
+                    <h2 id="today"></h2>
                     <p>emoji</p>
                     <img class= "testing" src="" alt="weather">
                     <p>Temp:</p>
@@ -44,7 +41,7 @@
             <section class="forecast-container">
                 <h2 class="forecastTitle">5-Day Forecast:</h2>
                 <div class="dayCard">
-                    <h3>Date</h3>
+                    <h3 class="one">Date</h3>
                     <p>emoji</p>
                     <img class= "testing" src="" alt="weather">
                     <p>Temp:</p>
@@ -52,7 +49,7 @@
                     <p>Humidity:</p>
                 </div>
                 <div class="dayCard">
-                    <h3>Date</h3>
+                    <h3 class="two">Date</h3>
                     <p>emoji</p>
                     <img class= "testing" src="" alt="weather">
                     <p>Temp:</p>
@@ -60,7 +57,7 @@
                     <p>Humidity:</p>
                 </div>
                 <div class="dayCard">
-                    <h3>Date</h3>
+                    <h3 class="three">Date</h3>
                     <p>emoji</p>
                     <img class= "testing" src="" alt="weather">
                     <p>Temp:</p>
@@ -68,7 +65,7 @@
                     <p>Humidity:</p>
                 </div>
                 <div class="dayCard">
-                    <h3>Date</h3>
+                    <h3 class="four">Date</h3>
                     <p>emoji</p>
                     <img class= "testing" src="" alt="weather">
                     <p>Temp:</p>
@@ -76,7 +73,7 @@
                     <p>Humidity:</p>
                 </div>
                 <div class="dayCard">
-                    <h3>Date</h3>
+                    <h3 class="five">Date</h3>
                     <p>emoji</p>
                     <img class= "testing" src="" alt="weather">
                     <p>Temp:</p>
@@ -88,5 +85,6 @@
     </main>    
     </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
   <script src="./assets/script.js"></script>
 </html>

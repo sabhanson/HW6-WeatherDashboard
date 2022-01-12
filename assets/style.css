@@ -85,10 +85,14 @@ hr {
     border-bottom: 3px solid black;
     }
 
-.historyCity {
+.placeholderBtn {
         border-radius: 10px;
         background-color: grey;
         width: 100%;
         color: white;
         border-bottom: 3px solid black;
         }
+
+#today {
+    font-size: 16px;
+}
