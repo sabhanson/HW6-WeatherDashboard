@@ -147,10 +147,16 @@ function searchCity() {
       })
       .then(function (data) {
         console.log(data)
-
+        
         console.log('=============')
-
+        
         console.log(data.daily[1].dt + ' this is tomorrows Unix time')
+        // convert UNIX time to correct formatting
+        //take the daily date time (unix number)
+        let timeUNIX = data.daily[1].dt
+        //put it through this moment method to return a nicely formatted MM/DD/YYYY day
+        let testmoment = moment.unix(timeUNIX).format('L');
+        console.log(testmoment + ' this is the UNIX number transformed into mm/dd/yyyy')
 
         console.log(data.daily[1].temp.max + ' this is the temp in farenheittt')
 
