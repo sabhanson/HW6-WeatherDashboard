@@ -1,98 +1,130 @@
-* { 
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
 .nav {
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    font-size: 50px;
-    font-weight: bold;
-    color: white;
-    background-image: linear-gradient(to right, lightskyblue, darkblue);
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  background-image: linear-gradient(to right, lightskyblue, darkblue);
 }
 
 main {
-    display: flex;
-    flex-flow: row wrap;
+  display: flex;
+  flex-flow: row wrap;
 }
 
-h3{
-    font-size: 20px;
+h3 {
+  font-size: 20px;
 }
 
 .left-container {
-    width: 20%;
-    padding: 5px;
-    border: 2px solid black;
+  width: 20%;
+  padding: 5px;
+  border: 2px solid black;
 }
 
 .right-container {
-    width: 80%;
-    display: flex;
-    flex-flow: row wrap;
+  width: 80%;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.hide {
+  display: none;
 }
 
 .today-container {
-    width: 100%;
-    border: 2px solid black;
+  width: 100%;
+  border: 2px solid black;
 }
 
 hr {
-    color: black;
+  color: black;
 }
 
 .forecast-container {
-    width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    border: 2px solid black;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  border: 2px solid black;
 }
 
 .forecastTitle {
-    width: 100%;
+  width: 100%;
 }
 
 .today {
-    border: 1px solid black;
-    width: 98%;
-    margin: 1%;
+  border: 1px solid black;
+  width: 98%;
+  margin: 1%;
 }
 
 .dayCard {
-    border: 1px solid black;
-    width: 18%;
-    background-color: darkslateblue;
-    color: white;
-    margin: 1%;
+  border: 1px solid black;
+  width: 18%;
+  background-color: darkslateblue;
+  color: white;
+  margin: 1%;
 }
 
 .searchH1 {
-    font-size: 30px;
+  font-size: 30px;
 }
 
-.searchBar {
-    width: 100%;
+.search-bar {
+  width: 100%;
 }
 
-.submitBtn {
-    border-radius: 10px;
-    background-color: lightskyblue;
-    width: 100%;
-    color: white;
-    border-bottom: 3px solid black;
-    }
+.submit-btn {
+  border-radius: 10px;
+  background-color: lightskyblue;
+  width: 100%;
+  color: white;
+  border-bottom: 3px solid black;
+}
 
 .placeholderBtn {
-        border-radius: 10px;
-        background-color: grey;
-        width: 100%;
-        color: white;
-        border-bottom: 3px solid black;
-        }
+  border-radius: 10px;
+  background-color: grey;
+  width: 100%;
+  color: white;
+  border-bottom: 3px solid black;
+}
 
 #today {
-    font-size: 16px;
+  font-size: 16px;
 }
+
+
+.UV-button {
+  padding: 0px 5px 0px 5px;
+  border-radius: 10px;
+  color: black;
+}
+
+.low-UV {
+  background-color: green;
+}
+
+.moderate-UV {
+  background-color: yellow;
+}
+
+.high-UV {
+  background-color: orange;
+}
+
+.very-high-UV {
+  background-color: red;
+}
+
+.extreme-UV {
+  background-color: purple;
+}
+
