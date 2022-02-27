@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
-    <header class="navbar navbar-dark bg-primary nav">
+    <header class="navbar nav">
       <p>Weather Dashboard</p>
     </header>
 
@@ -23,7 +23,7 @@
 
         <!-- SEARCH SECTION ON THE LEFT SIDE -->
         <div class="search-container">
-          <h1 class="searchH1">Search for a City:</h1>
+          <h1 class="search-for-city">Search for a City:</h1>
           <input
             class="search-bar"
             type="search"
@@ -44,13 +44,12 @@
         <!-- TODAY FORECAST CONTAINER -->
         <section class="today-container">
           <div class="today">
-            <h2 class="city-name"></h2>
-            <h3 class="today-date"></h3>
+            <h2 class="city-name-date">h2</h2>
             <img class="today-emoji" src="" alt="emoji of the current weather conditions" />
             <p class="today-temp"></p>
             <p class="today-wind"></p>
             <p class="today-humid"></p>
-            <p class="today-uv-index">UV Index: <button disabled class="UV-button"></button></p>
+            <p class="today-uv-index">UV Index: <button disabled class="UV-number"></button></p>
           </div>
         </section>
 
@@ -58,47 +57,7 @@
 
         <!-- FIVE DAY FORECAST CONTAINER -->
         <section class="forecast-container">
-          <h2 class="forecastTitle">5-Day Forecast:</h2>
-          <!-- <div class="dayCard">
-            <h3 class="dateTest" data-day="1">Date 1</h3>
-            <p>emoji</p>
-            <img class="testing" src="" alt="weather" />
-            <p>Temp:</p>
-            <p>Wind:</p>
-            <p>Humidity:</p>
-          </div>
-          <div class="dayCard">
-            <h3 class="dateTest">Date 2</h3>
-            <p>emoji</p>
-            <img class="testing" src="" alt="weather" />
-            <p>Temp:</p>
-            <p>Wind:</p>
-            <p>Humidity:</p>
-          </div>
-          <div class="dayCard">
-            <h3 class="dateTest">Date 3</h3>
-            <p>emoji</p>
-            <img class="testing" src="" alt="weather" />
-            <p>Temp:</p>
-            <p>Wind:</p>
-            <p>Humidity:</p>
-          </div>
-          <div class="dayCard">
-            <h3 class="dateTest">Date 4</h3>
-            <p>emoji</p>
-            <img class="testing" src="" alt="weather" />
-            <p>Temp:</p>
-            <p>Wind:</p>
-            <p>Humidity:</p>
-          </div>
-          <div class="dayCard">
-            <h3 class="dateTest">Date 5</h3>
-            <p>emoji</p>
-            <img class="testing" src="" alt="weather" />
-            <p>Temp:</p>
-            <p>Wind:</p>
-            <p>Humidity:</p>
-          </div> -->
+          <h2 class="forecast-title">5-Day Forecast:</h2>
         </section>
       </div>
     </main>

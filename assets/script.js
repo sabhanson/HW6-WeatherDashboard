@@ -1,10 +1,10 @@
 var submitBtn = $(".submit-btn");
 var mainContainer = $("#right-container");
-var forecastContainer = $('.forecast-container');
-var searchInput = $('.search-bar');
+var forecastContainer = $(".forecast-container");
+var searchInput = $(".search-bar");
 
 // VARIABLES FOR TODAY FORECAST CONTAINER
-const cityName = $(".city-name");
+const cityNameDate = $(".city-name-date");
 const todayDate = $(".today-date");
 const todayEmoji = $(".today-emoji");
 const todayTemp = $(".today-temp");
@@ -13,14 +13,15 @@ const todayHumid = $(".today-humid");
 
 // WHEN A USER CLICKS THE SUBMIT BUTTON
 submitBtn.on("click", function () {
+  // empties the forecast container so it doesn't repeat each time the submit button is clicked
+  forecastContainer.empty();
   var searchBar = $(".search-bar").val();
   // THE TEXT CONTENT OF CITYNAME WILL BE SET TO THE CITY THAT WAS SEARCHED
-  if (searchBar.value == "") {
+  if (searchBar == "") {
     window.alert("please enter a city name in the searchbar");
   } else {
     // cityName.textContent = searchBar.value;
     mainContainer.removeClass("hide");
-    searchInput.attr('value','');
 
     // FIRST FETCH REQUEST IS USING THE LAT AND LONG OF THE SEARCHED CITY TO RETURN VALUES FROM THE SECOND API CALL
     function latLongCall() {
@@ -37,8 +38,10 @@ submitBtn.on("click", function () {
           return response.json();
         })
         .then(function (data) {
+            console.log(data)
           // SETS THE DISPLAYED CITY NAME TO THE ONE THAT WAS SEARCHED
-          cityName.text(data.name);
+          let formattedTime = moment.unix(data.dt).format("L");
+          cityNameDate.text(data.name + ` (` + formattedTime + `)`);
           // SETS THE FORECAST EMOJI
           todayEmoji.attr(
             "src",
@@ -51,8 +54,6 @@ submitBtn.on("click", function () {
           // SETS THE HUMIDITY % FOR TODAY
           todayHumid.text(`Humidity: ` + data.main.humidity + "%");
           // GRABS THE UNIX FOR TODAY AND FORMATS IT TO XX/XX/XXXX FORMAT
-          let formattedTime = moment.unix(data.dt).format("L");
-          todayDate.text(formattedTime);
 
           // SETS VARIABLES FOR THE LATITUDE AND LONGITUDE OF THE CITY THAT WAS SEARCHED
           let latitude = data.coord.lat;
@@ -70,8 +71,8 @@ submitBtn.on("click", function () {
               return response.json();
             })
             .then(function (data) {
-              // SELECT THE UV INDEX 
-              let todayUVIndex = $(".UV-button");
+              // SELECT THE UV INDEX
+              let todayUVIndex = $(".UV-number");
               let currentUVI = data.current.uvi;
               todayUVIndex.text(currentUVI);
               if (currentUVI >= 0 && currentUVI <= 2.9999) {
@@ -83,32 +84,43 @@ submitBtn.on("click", function () {
               } else if (currentUVI >= 8 && currentUVI <= 10.9999) {
                 todayUVIndex.addClass("very-high-UV");
               } else {
-                todayUVIndex.addClass("extreme-UV")
+                todayUVIndex.addClass("extreme-UV");
               }
-
+              // for loop to create each forecast day card
               for (let i = 1; i < 6; i++) {
-                var eachDayDiv = $('<div>').addClass("dayCard");
-                var eachDate = $('<h3>');
-                var eachEmoji = $('<img>');
-                var eachTemp = $('<p>');
-                var eachWind = $('<p>');
-                var eachHumid = $('<p>');
-
-                // eachDayDiv.addClass("dayCard");
+                // jquery creating new HTML elements and adding the appropriate classes
+                var eachDayCard = $("<div>").addClass("day-card");
+                var eachDate = $("<h3>").addClass("each-date");
+                var eachEmoji = $("<img>").addClass("each-emoji");
+                var eachTemp = $("<p>").addClass("each-temp");
+                var eachWind = $("<p>").addClass("each-wind");
+                var eachHumid = $("<p>").addClass("each-humid");
+                // formatting the UNIX time data into xx/xx/xxxx format
                 eachDate.text(moment.unix(data.daily[i].dt).format("L"));
-                eachEmoji.attr('src',`http://openweathermap.org/img/wn/` + data.daily[i].weather[0].icon + `.png`);
-                eachTemp.text(`Temp: ` + data.daily[i].temp.max + ` \xB0F`)
-                eachWind.text(`Wind: ` + data.daily[i].wind_speed + `mph`)
+                // setting the source of each emoji image to the icon from the data
+                eachEmoji.attr(
+                  "src",
+                  `http://openweathermap.org/img/wn/` +
+                    data.daily[i].weather[0].icon +
+                    `.png`
+                );
+                // setting the text of the temp p tag using the temp data
+                eachTemp.text(`Temp: ` + data.daily[i].temp.max + ` \xB0F`);
+                // setting the text of the wind p tag using the wind data
+                eachWind.text(`Wind: ` + data.daily[i].wind_speed + `mph`);
+                // setting the text of the humidity p tag using the wind data
                 eachHumid.text(`Humidity: ` + data.daily[i].humidity + `%`);
-
-                eachDayDiv.append(eachDate, eachEmoji, eachTemp, eachWind, eachHumid)
-                
-                console.log(data.daily[i].wind_speed);
-                
-                forecastContainer.append(eachDayDiv)
+                // appending all of the new card elements to the card itself
+                eachDayCard.append(
+                  eachDate,
+                  eachEmoji,
+                  eachTemp,
+                  eachWind,
+                  eachHumid
+                );
+                // appending all of the day cards to the card container
+                forecastContainer.append(eachDayCard);
               }
-
-              
             });
         });
     }

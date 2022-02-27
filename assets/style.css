@@ -55,7 +55,7 @@ hr {
   border: 2px solid black;
 }
 
-.forecastTitle {
+.forecast-title {
   width: 100%;
 }
 
@@ -65,7 +65,25 @@ hr {
   margin: 1%;
 }
 
-.dayCard {
+.city-name-date {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.today-emoji, .each-emoji {
+  width: 50px;
+  height: auto;
+}
+
+.today-temp, .today-wind, .today-humid, .today-uv-index, .each-date, .each-temp, .each-wind, .each-humid {
+  font-size: 1rem;
+}
+
+.each-date {
+  font-weight: bold;
+}
+
+.day-card {
   border: 1px solid black;
   width: 18%;
   background-color: darkslateblue;
@@ -73,8 +91,8 @@ hr {
   margin: 1%;
 }
 
-.searchH1 {
-  font-size: 30px;
+.search-for-city {
+  font-size: 1.3rem;
 }
 
 .search-bar {
@@ -97,12 +115,9 @@ hr {
   border-bottom: 3px solid black;
 }
 
-#today {
-  font-size: 16px;
-}
 
-
-.UV-button {
+/* classes for the UV number, changes the color based on the UV Index rating */
+.UV-number {
   padding: 0px 5px 0px 5px;
   border-radius: 10px;
   color: black;
