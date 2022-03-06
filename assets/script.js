@@ -1,47 +1,60 @@
-var submitBtn = $(".submit-btn");
+const submitBtn = $(".submit-btn"); // submit button
 var mainContainer = $("#right-container");
 var forecastContainer = $(".forecast-container");
 var searchInput = $(".search-bar");
+var prevSearches = $(".buttons");
+const cityNameAndDate = $(".city-name-and-date"); // h2 that displays ex. "Portland (03/05/2022)"
+const todayEmoji = $(".today-emoji"); // img tag that displays today's forecast emoji
+const todayTemp = $(".today-temp"); // p tag that displays today's temperature
+const todayWind = $(".today-wind"); // p tag that displays today's wind speed
+const todayHumid = $(".today-humid"); // p tag that displays today's humidity rating
 
-// VARIABLES FOR TODAY FORECAST CONTAINER
-const cityNameDate = $(".city-name-date");
-const todayDate = $(".today-date");
-const todayEmoji = $(".today-emoji");
-const todayTemp = $(".today-temp");
-const todayWind = $(".today-wind");
-const todayHumid = $(".today-humid");
+// TODO: add media queries on the five day forecast cards fontsize
+// TODO: restructure functions, what needs to be nested in what??
 
-// WHEN A USER CLICKS THE SUBMIT BUTTON
+// on page load, any previously searched cities appear in the buttons
+// on previous city button click, run both fetch requests
+// on submit, need to run a function to fetch from the 1st api
+// once the first fetch is completed, need to run the 2nd api fetch
+
+init();
+
+function init() {
+  var searchedButton = $("<button>").addClass("placeholderBtn");
+  var pastSearch = JSON.parse(localStorage.getItem("newCity"));
+  searchedButton.value = pastSearch;
+  prevSearches.append($(searchedButton));
+  console.log(localStorage);
+  //load previously searched buttons
+}
+
 submitBtn.on("click", function () {
-  // empties the forecast container so it doesn't repeat each time the submit button is clicked
-  forecastContainer.empty();
-  var searchBar = $(".search-bar").val();
-  // THE TEXT CONTENT OF CITYNAME WILL BE SET TO THE CITY THAT WAS SEARCHED
+  // when the submit button is clicked
+  forecastContainer.empty(); // the forecast container is emptied so it doesn't repeat itself
+  var searchBar = $(".search-bar").val(); // variable for the the city "" that was searched
   if (searchBar == "") {
-    window.alert("please enter a city name in the searchbar");
+    // if the search bar is empty when submit is clicked
+    window.alert("please enter a city name in the searchbar"); // the user will be alerted to enter a city
   } else {
-    // cityName.textContent = searchBar.value;
-    mainContainer.removeClass("hide");
+    // if the search is successful then it can move on to the next steps
+    mainContainer.removeClass("hide"); // displays the container to show all of the weather information
 
-    // FIRST FETCH REQUEST IS USING THE LAT AND LONG OF THE SEARCHED CITY TO RETURN VALUES FROM THE SECOND API CALL
     function latLongCall() {
-      //this is the url that will need to be fetched to return the correct data
+      // this function completes the first fetch request to return specified data
       var weatherAPI =
         "https://api.openweathermap.org/data/2.5/weather?q=" +
         searchBar +
-        "&units=imperial&appid=d22455c31574a84b22d1c94f4c33f19c";
-      //fetch request to fetch the correct url (ex. api/vancouverWA)
-      fetch(weatherAPI)
-        //then with the response from the fetch request, do this
+        "&units=imperial&appid=d22455c31574a84b22d1c94f4c33f19c"; //this is the api url for this fetch request, it takes in the user's search input
+      fetch(weatherAPI) // fetch request to the URL of the user's chosen city
         .then(function (response) {
+          // then
           //return the request in json format
           return response.json();
         })
         .then(function (data) {
-            console.log(data)
           // SETS THE DISPLAYED CITY NAME TO THE ONE THAT WAS SEARCHED
           let formattedTime = moment.unix(data.dt).format("L");
-          cityNameDate.text(data.name + ` (` + formattedTime + `)`);
+          cityNameAndDate.text(data.name + ` (` + formattedTime + `)`);
           // SETS THE FORECAST EMOJI
           todayEmoji.attr(
             "src",
@@ -58,7 +71,6 @@ submitBtn.on("click", function () {
           // SETS VARIABLES FOR THE LATITUDE AND LONGITUDE OF THE CITY THAT WAS SEARCHED
           let latitude = data.coord.lat;
           let longitude = data.coord.lon;
-          console.log(latitude, longitude);
           fetch(
             // FETCH REQUEST USING THE LATITUDE AND LONGITUDE
             `https://api.openweathermap.org/data/2.5/onecall?lat=` +
@@ -125,5 +137,17 @@ submitBtn.on("click", function () {
         });
     }
     latLongCall();
+
+    localStorage.setItem("newCity", JSON.stringify(searchBar));
+    var newBtn = $("<button>");
+    var btnContainer = $(".buttons");
+    newBtn.addClass("placeholderBtn");
+    newBtn.text(searchBar);
+    btnContainer.append(newBtn);
   }
+
+  newBtn.on("click", function () {
+    forecastContainer.empty();
+    latLongCall(newBtn.text());
+  });
 });
