@@ -47,7 +47,7 @@ hr {
   color: black;
 }
 
-.forecast-container {
+.fiveday-forecast-container {
   width: 100%;
   display: flex;
   flex-flow: row wrap;
@@ -70,12 +70,20 @@ hr {
   font-weight: bold;
 }
 
-.today-emoji, .each-emoji {
+.today-emoji,
+.each-emoji {
   width: 50px;
   height: auto;
 }
 
-.today-temp, .today-wind, .today-humid, .today-uv-index, .each-date, .each-temp, .each-wind, .each-humid {
+.today-temp,
+.today-wind,
+.today-humid,
+.today-uv-index,
+.each-date,
+.each-temp,
+.each-wind,
+.each-humid {
   font-size: 1rem;
 }
 
@@ -115,9 +123,8 @@ hr {
   border-bottom: 3px solid black;
 }
 
-
 /* classes for the UV number, changes the color based on the UV Index rating */
-.UV-number {
+.UVIndex-number {
   padding: 0px 5px 0px 5px;
   border-radius: 10px;
   color: black;
@@ -142,4 +149,3 @@ hr {
 .extreme-UV {
   background-color: purple;
 }
-
